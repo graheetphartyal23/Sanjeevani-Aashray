@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjeevani Aashray Portal</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        header {
+            background-color: #ff6f00;
+            padding: 15px 20px; /* Increased padding for header size */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+            position: relative;
+        }
+
+        .logo img {
+            height: 80px;
+            width: auto;
+        }
+
+        .title {
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .title h1 {
+            font-size: 28px; /* Increased font size */
+            margin: 0;
+        }
+
+        .subheading {
+            font-size: 10px;
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+        .nav-login-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        nav {
+            display: flex;
+            gap: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .login-btn {
+            padding: 8px 16px;
+            background-color: #ffffff;
+            color: #ff6f00;
+            border: 1px solid #ff6f00;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .login-btn:hover {
+            background-color: #ff6f00;
+            color: white;
+        }
+
+        .cta-button {
+            background-color: #ff6f00;
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        /* Article Section */
+        .article {
+            padding: 50px 20px;
+            background-color: #f9f9f9;
+            display: flex; /* Flex to align images and text */
+            align-items: flex-start; /* Align text and images at the top */
+            justify-content: flex-start; /* Align to the left */
+            width: 100%; /* Full width */
+            margin: 0; /* No margin */
+        }
+
+        .article h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #ff6f00;
+        }
+
+        .article p {
+            font-size: 18px;
+            line-height: 1.6;
+            max-width: 600px; /* Limiting the width of the text */
+            color: #555;
+            text-align: justify; /* Justify text */
+        }
+
+        .image-container {
+            display: flex; /* Flexbox for images */
+            justify-content: flex-end; /* Align images to the right */
+            flex-grow: 1; /* Allow image container to fill remaining space */
+        }
+
+        .article img {
+            max-width: 320px; /* Adjusted size for both images */
+            width: 100%; /* Responsive */
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 0; /* No margin to eliminate gap */
+        }
+
+        /* Blog Section */
+        .blogs {
+            padding: 50px 20px;
+            background-color: #fff;
+        }
+
+        .blogs h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+            color: #ff6f00;
+        }
+
+        .blog-posts {
+            display: grid; /* Grid layout for blog posts */
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 20px; /* Space between grid items */
+        }
+
+        .blog-post {
+            background-color: #f9f9f9; /* Background color for each blog post */
+            padding: 15px; /* Padding around each blog post */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex; /* Flexbox for blog section */
+            flex-direction: column; /* Stack content vertically */
+            align-items: flex-start; /* Align text and images at the top */
+        }
+
+        .blog-text {
+            flex-grow: 1; /* Allow text to grow and fill space */
+            margin-bottom: 10px; /* Space between text and image */
+        }
+
+        .blog-text h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .blog-text p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.5;
+            text-align: justify; /* Justify text */
+        }
+
+        .read-more {
+            display: inline-block;
+            margin-top: 10px;
+            color: #ff6f00;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        .read-more:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background-color: #ff6f00;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+/* Dropdown Menu */
+.dropdown {
+    position: relative; /* Position relative to the nav */
+    display: inline-block; /* Align inline with other nav items */
+}
+
+.dropdown-content {
+    display: none; /* Hide by default */
+    position: absolute; /* Position relative to the dropdown */
+    background-color: #f9f9f9; /* Background color */
+    min-width: 160px; /* Minimum width for the dropdown */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Shadow for effect */
+    z-index: 1; /* Make sure it appears above other content */
+}
+
+.dropdown-content a {
+    color: black; /* Text color */
+    padding: 12px 16px; /* Padding for each item */
+    text-decoration: none; /* Remove underline */
+    display: block; /* Block display */
+    font-size: 16px; /* Set font size to match other navigation items */
+}
+
+.dropdown:hover .dropdown-content {
+    display: block; /* Show dropdown on hover */
+}
+
+.dropbtn:hover {
+    color: #fcfcfc; /* Change color on hover for the dropdown button */
+}
+
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">
+        <img src="LOGO.jpg" alt="Sanjeevani Aashray Logo"> <!-- Insert the logo image -->
+    </div>
+    <div class="title">
+        <h1>SANJEEVANI AASHRAY</h1>
+        <div class="subheading">Aapki Emergency, Hamara Prathmikta</div>
+    </div>
+    <div class="nav-login-wrapper">
+        <nav>
+            <a href="hospital.html">Home</a>
+            <div class="dropdown">
+                <a href="#services" class="dropbtn">Services</a>
+                <div class="dropdown-content">
+                    <a href="#icu">ICU</a>
+                    <a href="#beds">Beds</a>
+                    <a href="#oxygen">Oxygen</a>
+                    <a href="#ventilator">Ventilator</a>
+                    <a href="#bloodbank">Blood Bank</a>
+                    <a href="#emergencybeds">Emergency Beds</a>
+                    <a href="#Ambulance">Ambulance</a>
+
+                </div>
+            </div>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        
+        <a href="login_page.html">
+            <button class="login-btn">Login</button>
+        </a>
+    </div>
+</header>
+
+<!-- Article Section about Sanjeevani Aashray Portal -->
+<section class="article">
+    <!-- Left-aligned text -->
+    <div class="text">
+        <h2>About Us</h2>
+        <p>
+            Sanjeevani Aashray is an innovative platform dedicated to connecting patients with hospitals during emergencies, ensuring real-time availability of critical medical resources. Our mission is to simplify access to immediate medical assistance, optimize healthcare resource utilization, and enhance the overall emergency response experience. By leveraging advanced technology, we aim to bridge the gap between patients and healthcare providers effectively. Our platform not only facilitates quick decision-making for patients and their families but also empowers healthcare facilities to manage resources efficiently.
+        </p>
+    </div>
+
+    <!-- Right-aligned images -->
+    <div class="image-container">
+        <img src="data:image/png;base64,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" alt="Healthcare Image"> <!-- First Image -->
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREKjERMjdwEkN56ABBl6ZiV-5Q8yy6wVmadg&s" alt="Healthcare Image 2"> <!-- Second Image -->
+    </div>
+</section>
+
+<!-- Blogs Section -->
+<section class="blogs">
+    <h2>Latest Blogs</h2>
+    <div class="blog-posts">
+        <div class="blog-post">
+            <div class="blog-text">
+                <h3>The Importance of Real-Time ICU and Ventilator Availability</h3>
+
+                <p>Emergencies are unpredictable, and in critical situations, patients need immediate access to care. One of the biggest challenges in healthcare today is the delay caused by not.......</p>
+                <a href="blog1.html" class="read-more">Read more</a>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-text">
+                <h3>How Technology is Transforming Hospital Resource Management</h3>
+  
+                <p>Hospital resource management is an integral part of healthcare delivery, especially when it comes to emergency services. Efficient resource allocation.......</p>
+                <a href="blog2.html" class="read-more">Read more</a>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-text">
+                <h3>Blood Bank Management: Ensuring Critical Supplies in Emergencies</h3>
+      
+                <p>Blood is a critical resource in the medical field, especially during emergencies like surgeries, trauma cases, or treatments for certain medical conditions. Ensuring a continuous......</p>
+                <a href="blog3.html" class="read-more">Read more</a>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-text">
+                <h3>The Role of Online Platforms in Booking Emergency Medical Services</h3>
+           
+                <p>With the rise of digital solutions, accessing healthcare services has become easier than ever before. Patients no longer need to visit hospitals in person to inquire about.......</p>
+                <a href="blog4.html" class="read-more">Read more</a>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-text">
+                <h3>Patient Empowerment Through Healthcare Technology</h3>
+        
+                <p>Patients today have more control over their healthcare choices than ever before, thanks to the growing role of digital technology. From booking appointments..........</p>
+                <a href="blog5.html" class="read-more">Read more</a>
+            </div>
+        </div>
+
+        <div class="blog-post">
+            <div class="blog-text">
+                <h3>Emergency Services During the COVID-19 Pandemic: Lessons Learned</h3>
+         
+                <p>The COVID-19 pandemic exposed many vulnerabilities in healthcare systems worldwide, particularly regarding the availability of emergency medical services. ICU beds, ventilators, and.........</p>
+                <a href="blog6.html" class="read-more">Read more</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+<footer>
+    <p>&copy; 2024 Sanjeevani Aashray. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
